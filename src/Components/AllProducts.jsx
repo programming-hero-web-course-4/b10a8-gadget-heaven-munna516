@@ -5,14 +5,12 @@ import { useEffect, useState } from "react";
 const AllProducts = () => {
     const allproducts = useLoaderData()
     const [product, setProduct] = useState(allproducts)
-    useEffect(() => {
-        const handleCategory = category => {
-            const categoryProduct = [...product].filter(item => item.category == category)
-            setProduct(categoryProduct)
-        }
-    }, [product])
 
-    // console.log(params)
+    const handleCategory = category => {
+        const categoryProduct = [...allproducts].filter(item => item.category == category)
+        setProduct(categoryProduct)
+    }
+
     return (
         <>
             <div className="mt-72">
