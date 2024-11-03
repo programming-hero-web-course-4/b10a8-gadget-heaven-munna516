@@ -5,7 +5,7 @@ import { FaCartPlus, FaRegHeart } from "react-icons/fa";
 const Navbar = () => {
     return (
         <div className="w-11/12 mx-auto mt-5">
-            <div className="navbar bg-[#9538E2] text-white px-5 rounded-tl-xl rounded-tr-xl">
+            <div className="navbar bg-[#9538E2] text-white rounded-tl-xl rounded-tr-xl px-5 lg:px-20">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,7 +39,7 @@ const Navbar = () => {
                         <NavLink to='/dashboard'>Dashboard</NavLink>
                     </ul>
                 </div>
-                <div className="navbar-end gap-4 text-xl">
+                <div className="navbar-end gap-4 text-2xl">
                     <FaCartPlus /> <FaRegHeart />
                 </div>
             </div>

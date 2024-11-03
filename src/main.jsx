@@ -9,6 +9,8 @@ import Statistics from './Pages/Statistics';
 import Dashboard from './Pages/Dashboard';
 import Home from './Pages/Home';
 import MainLayout from './Layout/MainLayout';
+import { element } from 'prop-types';
+import AllProducts from './Components/AllProducts';
 
 
 const router = createBrowserRouter([
@@ -18,7 +20,16 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        children: [
+          {
+            path: '/category/:category',
+            element: <AllProducts></AllProducts>,
+            loader: () => fetch('../allproducts.json')
+          },
+          
+
+        ]
       },
       {
         path: '/statistics',
