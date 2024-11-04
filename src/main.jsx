@@ -11,12 +11,15 @@ import Home from './Pages/Home';
 import MainLayout from './Layout/MainLayout';
 import { element } from 'prop-types';
 import AllProducts from './Components/AllProducts';
+import Error from './Components/Error';
+import Details from './Components/Details';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: '/',
@@ -28,12 +31,11 @@ const router = createBrowserRouter([
             loader: () => fetch('../allproducts.json')
           },
           {
-            path: '/category/:category',
+            path: '/category',
             element: <AllProducts></AllProducts>,
             loader: () => fetch('../allproducts.json')
           },
-
-
+         
         ]
       },
       {
@@ -43,7 +45,13 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Dashboard></Dashboard>
-      }
+      },
+      {
+        path: '/details/:title',
+        element: <Details></Details>,
+        loader: () => fetch('../allproducts.json')
+      },
+
     ]
   }
 
