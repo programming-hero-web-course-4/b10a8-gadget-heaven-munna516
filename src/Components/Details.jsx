@@ -2,17 +2,24 @@ import React from 'react';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { FaCartPlus, FaRegHeart } from "react-icons/fa";
 import ReusableBanner from './ReusableBanner';
+import { addToStoreCartList, addToStoreWishList } from '../Utilities/AddToDb';
 
 
 const Details = () => {
-    const navigate = useNavigate()
     const { title } = useParams()
     const data = useLoaderData()
     const detailsProduct = data.find(product => product.product_title === title)
-    const { product_image, product_title, price, availability, rating, specification, description } = detailsProduct
+    const { product_id, product_image, product_title, price, rating, specification, description } = detailsProduct
+
+    const handleCart = (id) => {
+        addToStoreCartList(id)
+    }
+    const handleWish = (id) => {
+        addToStoreWishList(id)
+    }
     return (
         <div>
-            <div className="bg-[#9538E2] text-center text-white pt-10 pb-64  rounded-bl-xl rounded-br-xl mb-96">
+            <div className={`bg-[#9538E2] mb-96 text-center text-white pt-10 pb-64  rounded-bl-xl rounded-br-xl ${location.pathname != '/' ? 'rounded-tl-xl rounded-tr-xl' : ''}`}>
 
                 <ReusableBanner title={"Product Details"} subtitle={"Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!"}></ReusableBanner>
 
@@ -30,7 +37,7 @@ const Details = () => {
                             <p className='text-gray-400'>{description}</p>
                             <h1 className='font-bold text-lg'>Specification: </h1>
                             {
-                                specification.map((item, index) => <p className='text-gray-400'>{index + 1}. {item}</p>)
+                                specification.map((item, index) => <p key={index} className='text-gray-400'>{index + 1}. {item}</p>)
                             }
                             <h1 className='font-bold text-lg'>Ratings : </h1>
                             <div className='flex items-center gap-6'>
@@ -49,10 +56,9 @@ const Details = () => {
 
                             </div>
                             <div className='flex items-center gap-16'>
-                                <button className='flex items-center gap-3 text-xl px-4 py-3 rounded-full bg-[#9538E2] text-white'>Add to cart <FaCartPlus /></button>
-                                <button className='border-2 border-r-gray-300 rounded-full p-3 text-4xl'><FaRegHeart /></button>
+                                <button onClick={() => handleCart(product_id)} className='flex items-center gap-3 text-xl px-4 py-3 rounded-full bg-[#9538E2] text-white'>Add to cart <FaCartPlus /></button>
+                                <button onClick={() => handleWish(product_id)} className='border-2 border-r-gray-300 rounded-full p-3 text-4xl'><FaRegHeart /></button>
                             </div>
-
                         </div>
                     </div>
                 </div>
