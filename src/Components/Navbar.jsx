@@ -1,10 +1,18 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { json, NavLink, useLocation } from "react-router-dom";
 import { FaCartPlus, FaRegHeart } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { getStoreCartList } from "../Utilities/AddToDb";
 
 
 const Navbar = () => {
 
     const location = useLocation()
+    // const cartStr = getStoreCartList('cart-list')
+    // const [cartCount, setCartCount] = useState(cartStr.length)
+    // useEffect(() => {
+    //     const cartStr = getStoreCartList('cart-list')
+    //     setCartCount(cartStr.length)
+    // }, [cartCount])
 
     return (
         <div className="w-11/12 mx-auto mt-5">
@@ -45,8 +53,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-4 text-2xl text-black">
-                    <span className="bg-white p-3 rounded-full">< FaCartPlus /></span>
-                    <span className="bg-white p-3 rounded-full"><FaRegHeart /></span>
+                    <span className="bg-white p-5 rounded-full">< FaCartPlus /> <span className="absolute top-9 right-60 text-red-600 "></span></span>
+                    <span className="bg-white p-5 rounded-full"><FaRegHeart /></span>
                 </div>
             </div>
         </div>

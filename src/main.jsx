@@ -49,12 +49,12 @@ const router = createBrowserRouter([
       {
         path: '/details/:title',
         element: <Details></Details>,
-        loader: () => fetch('./allproducts.json')
+        loader: () => fetch('/allproducts.json')
       },
       {
         path: '/dashboard',
         element: <Dashboard></Dashboard>,
-        loader: () => fetch('./allproducts.json'),
+        loader: () => fetch('/allproducts.json'),
         children: [
 
           {
@@ -69,15 +69,10 @@ const router = createBrowserRouter([
           }
         ]
       },
-      // {
-      //   path: '/details/:title',
-      //   element: <Details></Details>,
-      //   loader: () => fetch('./allproducts.json')
-      // },
       {
         path: '/offers',
         element: <Offers></Offers>,
-        loader: () => fetch('./offers.json')
+        loader: () => fetch('/offers.json')
       }
 
     ]
