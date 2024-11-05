@@ -14,7 +14,7 @@ const Details = () => {
     const { product_id, product_image, product_title, price, rating, specification, description } = detailsProduct
 
     const notify1 = () => toast.success('Item added in cartlist', {
-        position: "top-center",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -25,7 +25,7 @@ const Details = () => {
         transition: Bounce,
     });
     const notify3 = () => toast.success('Item added in Wishlist', {
-        position: "top-center",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -37,7 +37,7 @@ const Details = () => {
     });
 
     const notify2 = () => toast.warn('Already added', {
-        position: "top-center",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

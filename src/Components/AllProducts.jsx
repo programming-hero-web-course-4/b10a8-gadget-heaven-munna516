@@ -14,6 +14,7 @@ const AllProducts = () => {
             const categoryProduct = [...allproducts].filter(item => item.category == category)
             setProduct(categoryProduct)
         }
+
     }
 
     return (
@@ -26,15 +27,15 @@ const AllProducts = () => {
                     <div className="w-2/6 md:w-1/6 border-2 border-gray-300 rounded-xl flex justify-center max-h-[300px] items-center">
                         <div className="space-y-2 py-2 flex flex-col">
 
-                            <NavLink onClick={() => handleCategory("all")} className="btn rounded-lg w-28 lg:w-36 text-white hover:text-white bg-[#9538E2]">All Products</NavLink>
+                            <NavLink to='/category/all' onClick={() => handleCategory("all")} className={({ isActive }) => `btn w-28 lg:w-36 hover:border-[#9538E2]  ${isActive ? 'bg-[#9538E2] text-white' : ''}`} >All Products</NavLink>
 
-                            <NavLink to='/category' onClick={() => handleCategory("Laptops")} className="btn w-28 lg:w-36 hover:border-[#9538E2] ">Laptops</NavLink>
+                            <NavLink to="/category/laptops" onClick={() => handleCategory("Laptops")} className={({ isActive }) => `btn w-28 lg:w-36 hover:border-[#9538E2] ${isActive ? 'bg-[#9538E2] text-white' : ''}`} >Laptops</NavLink>
 
-                            <NavLink to='/category' onClick={() => handleCategory("Smartphones")} className="btn w-28 lg:w-36 hover:border-[#9538E2] ">Phones</NavLink>
+                            <NavLink to='/category/phones' onClick={() => handleCategory("Smartphones")} className={({ isActive }) => `btn w-28 lg:w-36 hover:border-[#9538E2] ${isActive ? 'bg-[#9538E2] text-white' : ''}`} >Phones</NavLink>
+                            {/* btn w-28 lg:w-36 hover:border-[#9538E2]  */}
+                            <NavLink to='/category/accesories' onClick={() => handleCategory("Accessories")} className={({ isActive }) => `btn w-28 lg:w-36 hover:border-[#9538E2] ${isActive ? 'bg-[#9538E2] text-white' : ''}`} >Accesories</NavLink>
 
-                            <NavLink to='/category' onClick={() => handleCategory("Accessories")} className="btn w-28 lg:w-36 hover:border-[#9538E2] ">Accesories</NavLink>
-
-                            <NavLink onClick={() => handleCategory("Watches")} className="btn w-28 lg:w-36 hover:border-[#9538E2] ">Watches</NavLink>
+                            <NavLink to='/category/watches' onClick={() => handleCategory("Watches")} className={({ isActive }) => `btn w-28 lg:w-36 hover:border-[#9538E2] ${isActive ? 'bg-[#9538E2] text-white' : ''}`} >Watches</NavLink>
 
                         </div>
                     </div>

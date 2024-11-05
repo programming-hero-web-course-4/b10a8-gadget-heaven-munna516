@@ -23,7 +23,7 @@ const Product = ({ product, length }) => {
                         </div>
                     </div>
                     : <div>
-                        <h1 className='text-4xl font-bold h-full flex justify-center items-center'>Item Not Found</h1>
+                        <h1 className='text-4xl font-bold h-full flex justify-center items-center'>No Item Found</h1>
                     </div>
             }
 

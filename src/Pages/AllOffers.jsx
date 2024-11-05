@@ -3,7 +3,7 @@ import CountdownTimer from "../Components/CountdownTime";
 import ReusableBanner from "../Components/ReusableBanner";
 import OfferCard from "../Components/OfferCard";
 
-const Offers = () => {
+const AllOffers = () => {
     const targetDate = new Date("November 31, 2024 23:59:59").getTime();
     const data = useLoaderData()
 
@@ -27,10 +27,8 @@ const Offers = () => {
                     data.map((product) => <OfferCard key={product.product_id} product={product}></OfferCard>)
                 }
             </div>
-
-
         </div>
     );
 };
 
-export default Offers;
+export default AllOffers;

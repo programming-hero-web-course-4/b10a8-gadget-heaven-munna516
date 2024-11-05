@@ -13,7 +13,7 @@ import { element } from 'prop-types';
 import AllProducts from './Components/AllProducts';
 import Error from './Components/Error';
 import Details from './Components/Details';
-import Offers from './Pages/Offers';
+import AllOffers from './Pages/AllOffers';
 import CartList from './Components/CartList';
 import Wishlist from './Components/Wishlist';
 
@@ -33,9 +33,8 @@ const router = createBrowserRouter([
             element: <AllProducts></AllProducts>,
             loader: () => fetch('../allproducts.json')
           },
-
           {
-            path: '/category',
+            path: '/category/:category',
             element: <AllProducts></AllProducts>,
             loader: () => fetch('../allproducts.json')
           },
@@ -70,8 +69,8 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/offers',
-        element: <Offers></Offers>,
+        path: '/alloffers',
+        element: <AllOffers></AllOffers>,
         loader: () => fetch('/offers.json')
       }
 

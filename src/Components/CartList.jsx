@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { HiOutlineAdjustments } from "react-icons/hi";
 import { getStoreCartList } from '../Utilities/AddToDb';
-import { json, useLoaderData } from 'react-router-dom';
+import { json, useLoaderData, useNavigate } from 'react-router-dom';
 import CartAndWishlist from '../Components/CartAndWishlist';
 import { MdVerified } from "react-icons/md";
 
 const CartList = () => {
+    const navigate = useNavigate()
     const [isDisable, setDisable] = useState(true)
-    const[newPrice, setNewPrice] = useState(0)
+    const [newPrice, setNewPrice] = useState(0)
     const data = useLoaderData()
     let storedCartId = getStoreCartList()
     const storedInCart = data.filter(items => storedCartId.includes(items.product_id))
@@ -46,6 +47,9 @@ const CartList = () => {
         setNewPrice(totalPrice)
         setStore([])
     }
+    const navigateHome= ()=>{
+        navigate('/')
+    }
     return (
         <div>
 
@@ -57,13 +61,13 @@ const CartList = () => {
                     <p className='text-xl text-gray-400'>Total : ${newPrice}</p>
                     <div className="modal-action text-center">
                         <form method="dialog">
-                            <button className="btn border-[#9538E2] hover:bg-[#9538E2] hover:text-white">Close</button>
+                            <button className="btn border-[#9538E2] hover:bg-[#9538E2] hover:text-white" onClick={()=>navigateHome()}>Close</button>
                         </form>
                     </div>
                 </div>
             </dialog>
             <div className='flex justify-between items-center mt-10 '>
-                <h1 className='text-xl font-bold'>Cart</h1>
+                <h1 className='text-2xl font-bold'>Cart</h1>
                 <div className='flex items-center gap-4'>
                     <h1 className='text-xl font-bold'>Total Cost: ${totalPrice}</h1>
                     <button onClick={() => handleSortByPrice()} className="btn border-2 border-[#9538E2] bg-white px-6 py-1 rounded-full text-[#9538E2] flex gap-2 items-center hover:bg-[#9538E2] hover:text-white">Sort By Price <HiOutlineAdjustments /></button>
