@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { getStoreWishList } from '../Utilities/AddToDb';
+import { useLoaderData } from 'react-router-dom';
+import CartAndWishlist from './CartAndWishlist';
 
 const Wishlist = () => {
+    const data = useLoaderData()
+    const storedWishId = getStoreWishList()
+    const storedInWish = data.filter(items => storedWishId.includes(items.product_id))
+    const [store, setStore] = useState(storedInWish)
+
+    const handleWish = () => {
+        const storedWishId = getStoreWishList()
+        console.log(storedWishId);
+        const storedInWish = data.filter((items) => storedWishId.includes(items.product_id))
+        console.log(storedInWish);
+        setStore(storedInWish)
+    }
+    const handleDelete = (id) => {
+        const storedWishId = getStoreWishList()
+        console.log(storedWishId);
+        const storedInWish = storedWishId.filter(item => item !== id);
+        localStorage.setItem('wish-list', JSON.stringify(storedInWish))
+        console.log(storedInWish);
+        handleWish()
+    }
     return (
-        <div className={({ isActive }) => (isActive ? "active-tab" : "tab")}>
-            Wishlist
-        </div>
+        <>
+            <div className='flex justify-between items-center mt-10 '>
+                <h1 className='text-xl font-bold'>Wishlist</h1>
+            </div>
+            <div className='mt-10 mb-20 space-y-5'>
+                {
+                    store.map(product => <CartAndWishlist key={product.product_id} product={product} handleDelete={handleDelete}></CartAndWishlist>)
+                }
+            </div>
+        </>
     );
 };
 

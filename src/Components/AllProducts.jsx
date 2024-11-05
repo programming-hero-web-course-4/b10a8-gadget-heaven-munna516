@@ -14,7 +14,6 @@ const AllProducts = () => {
             const categoryProduct = [...allproducts].filter(item => item.category == category)
             setProduct(categoryProduct)
         }
-
     }
 
     return (

@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const CartAndWishlist = ({ product, handleDelete }) => {
     const { product_image, product_title, description, price, product_id } = product
 
-    const deleteAlert = () => toast.error('Item is deleted', {
+    const deleteAlert = () => toast.error('Item removed', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,

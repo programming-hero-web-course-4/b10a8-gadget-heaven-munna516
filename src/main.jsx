@@ -33,6 +33,7 @@ const router = createBrowserRouter([
             element: <AllProducts></AllProducts>,
             loader: () => fetch('../allproducts.json')
           },
+
           {
             path: '/category',
             element: <AllProducts></AllProducts>,
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
       {
         path: '/statistics',
         element: <Statistics></Statistics>
+      },
+      {
+        path: '/details/:title',
+        element: <Details></Details>,
+        loader: () => fetch('./allproducts.json')
       },
       {
         path: '/dashboard',
@@ -58,15 +64,16 @@ const router = createBrowserRouter([
           },
           {
             path: '/dashboard/wishlist',
-            element: <Wishlist></Wishlist>
+            element: <Wishlist></Wishlist>,
+            loader: () => fetch('../allproducts.json'),
           }
         ]
       },
-      {
-        path: '/details/:title',
-        element: <Details></Details>,
-        loader: () => fetch('./allproducts.json')
-      },
+      // {
+      //   path: '/details/:title',
+      //   element: <Details></Details>,
+      //   loader: () => fetch('./allproducts.json')
+      // },
       {
         path: '/offers',
         element: <Offers></Offers>,

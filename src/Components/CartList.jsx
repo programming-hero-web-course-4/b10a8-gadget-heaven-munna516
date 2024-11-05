@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { HiOutlineAdjustments } from "react-icons/hi";
-import { addToStoreCartList, getStoreCartList, getStoreWishList } from '../Utilities/AddToDb';
+import {  getStoreCartList} from '../Utilities/AddToDb';
 import { useLoaderData } from 'react-router-dom';
 import CartAndWishlist from '../Components/CartAndWishlist';
 
 
 const CartList = () => {
-    // const location = useLocation()
     const data = useLoaderData()
     const storedCartId = getStoreCartList()
     const storedInCart = data.filter(items => storedCartId.includes(items.product_id))

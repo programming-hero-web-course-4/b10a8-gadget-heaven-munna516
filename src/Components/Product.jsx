@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 const Product = ({ product, length }) => {
     const { product_title, product_image, price } = product
     return (

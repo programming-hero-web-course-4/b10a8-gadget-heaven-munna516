@@ -1,8 +1,6 @@
 import ReusableBanner from '../Components/ReusableBanner';
 import { NavLink, Outlet } from 'react-router-dom';
 
-
-
 const Dashboard = () => {
 
     return (
