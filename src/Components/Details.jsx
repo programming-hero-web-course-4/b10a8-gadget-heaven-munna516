@@ -3,19 +3,67 @@ import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { FaCartPlus, FaRegHeart } from "react-icons/fa";
 import ReusableBanner from './ReusableBanner';
 import { addToStoreCartList, addToStoreWishList } from '../Utilities/AddToDb';
-
+import { Bounce, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Details = () => {
     const { title } = useParams()
     const data = useLoaderData()
-    const detailsProduct = data.find(product => product.product_title === title)
+    const detailsProduct = data.find((product) => product.product_title === title)
     const { product_id, product_image, product_title, price, rating, specification, description } = detailsProduct
 
+    const notify1 = () => toast.success('Item added in Cartlist', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+    });
+    const notify3 = () => toast.success('Item added in Wishlist', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+    });
+
+    const notify2 = () => toast.warn('Already added ', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+    });
     const handleCart = (id) => {
-        addToStoreCartList(id)
+        const isTrue = addToStoreCartList(id)
+        if (isTrue) {
+            notify2()
+        }
+        else {
+            notify1()
+
+        }
     }
     const handleWish = (id) => {
-        addToStoreWishList(id)
+        const isTrue = addToStoreWishList(id)
+        if (isTrue) {
+            notify2()
+        }
+        else {
+            notify3()
+        }
     }
     return (
         <div>

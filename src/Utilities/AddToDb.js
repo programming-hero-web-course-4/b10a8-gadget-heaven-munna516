@@ -23,24 +23,26 @@ const getStoreWishList = () => {
 const addToStoreCartList = (id) => {
     const storedList = getStoreCartList()
     if (storedList.includes(id)) {
-        console.log(id)
+        return true
     }
-    else{
+    else {
         storedList.push(id)
         const storedListStr = JSON.stringify(storedList)
-        localStorage.setItem('cart-list',storedListStr)
+        localStorage.setItem('cart-list', storedListStr)
+        return false
     }
 }
 const addToStoreWishList = (id) => {
     const storedList = getStoreWishList()
     if (storedList.includes(id)) {
-        console.log(id)
+        return true
     }
-    else{
+    else {
         storedList.push(id)
         const storedListStr = JSON.stringify(storedList)
-        localStorage.setItem('wish-list',storedListStr)
+        localStorage.setItem('wish-list', storedListStr)
+        return false
     }
 }
 
-export {addToStoreCartList,addToStoreWishList,getStoreCartList,getStoreWishList}
+export { addToStoreCartList, addToStoreWishList, getStoreCartList, getStoreWishList }

@@ -1,6 +1,21 @@
 import { MdDeleteForever } from "react-icons/md";
-const CartAndWishlist = ({ product }) => {
-    const { product_image, product_title, description, price } = product
+import { Bounce, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const CartAndWishlist = ({ product, handleDelete }) => {
+    const { product_image, product_title, description, price, product_id } = product
+
+    const deleteAlert = () => toast.error('Item is deleted', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+    });
+
     return (
         <>
             <div className="border-2 border-gray-300 flex justify-between items-center p-5  rounded-2xl">
@@ -15,10 +30,11 @@ const CartAndWishlist = ({ product }) => {
                     </div>
                 </div>
                 <div className="text-2xl text-red-500 ">
-                    <MdDeleteForever />
+                    <span onClick={() => { deleteAlert(); handleDelete(product_id) }} className="hover:cursor-pointer"><MdDeleteForever /></span>
 
                 </div>
             </div>
+
         </>
     );
 };

@@ -13,6 +13,9 @@ import { element } from 'prop-types';
 import AllProducts from './Components/AllProducts';
 import Error from './Components/Error';
 import Details from './Components/Details';
+import Offers from './Pages/Offers';
+import CartList from './Components/CartList';
+import Wishlist from './Components/Wishlist';
 
 
 const router = createBrowserRouter([
@@ -45,13 +48,30 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Dashboard></Dashboard>,
-        loader: () => fetch('../allproducts.json')
+        loader: () => fetch('./allproducts.json'),
+        children: [
+
+          {
+            path: '/dashboard',
+            element: <CartList></CartList>,
+            loader: () => fetch('../allproducts.json'),
+          },
+          {
+            path: '/dashboard/wishlist',
+            element: <Wishlist></Wishlist>
+          }
+        ]
       },
       {
         path: '/details/:title',
         element: <Details></Details>,
-        loader: () => fetch('../allproducts.json')
+        loader: () => fetch('./allproducts.json')
       },
+      {
+        path: '/offers',
+        element: <Offers></Offers>,
+        loader: () => fetch('./offers.json')
+      }
 
     ]
   }
