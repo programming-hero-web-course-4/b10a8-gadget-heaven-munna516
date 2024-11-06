@@ -49,14 +49,14 @@ const Navbar = () => {
                         <NavLink to='/alloffers' className={({ isActive }) => `${isActive ? "bg-[#9538E2] text-white py-1 px-2 rounded-xl" : ''}`}>Offers</NavLink>
                     </ul>
                 </div>
-                <div className="navbar-end gap-4 text-2xl text-black">
+                <div className="navbar-end gap-4 text-sm text-black">
 
-                    <span className="relative bg-white p-5 rounded-full">< FaCartPlus />
-                        <span className="absolute -top-1 right-4 text-[#9538E2]">{cartItems.length}</span>
+                    <span className="relative bg-white p-4 rounded-full">< FaCartPlus />
+                        <span className="absolute top-0 right-4 text-[#9538E2]">{cartItems.length}</span>
                     </span>
 
-                    <span className="relative bg-white p-5 rounded-full"><FaRegHeart />
-                        <span className="absolute -top-1 right-4 text-[#9538E2]">{wishItems.length}</span>
+                    <span className="relative bg-white p-4 rounded-full"><FaRegHeart />
+                        <span className="absolute top-0 right-4 text-[#9538E2]">{wishItems.length}</span>
                     </span>
                 </div>
             </div>
