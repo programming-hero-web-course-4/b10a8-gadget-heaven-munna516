@@ -83,7 +83,7 @@ const Details = () => {
 
                 <ReusableBanner title={"Product Details"} subtitle={"Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!"}></ReusableBanner>
 
-                <div className='relative flex justify-center mt-10 text-black'>
+                <div className='relative flex justify-center mt-10 mb-24 text-black '>
                     <div className='absolute rounded-lg w-2/3 h-[550px] border-2 border-gray-300 p-4 bg-white mb-96 lg:flex gap-2 lg:gap-8 items-center'>
                         <div className='w-1/3 mx-auto lg:w-1/2'>
                             <img className='lg:h-[470px]  rounded-lg' src={product_image} alt="" />
@@ -115,7 +115,7 @@ const Details = () => {
                                 <h1 className='lg:text-xl font-bold'>{rating}</h1>
                             </div>
 
-                            <div className='flex items-center gap-16'>
+                            <div className='flex items-center gap-16 '>
                                 <button onClick={() => handleCart(product_id)} className=' btn flex items-center border-2 border-[#9538E2] gap-3 lg:text-xl  lg:px-4 lg:py-3 rounded-full hover:bg-[#9538E2] hover:text-white pb-1'>Add to cart <FaCartPlus /></button>
                                 <button onClick={() => handleWish(product_id)} className='btn   rounded-full  lg:text-4xl' disabled={isDisabled}><FaRegHeart /></button>
                             </div>

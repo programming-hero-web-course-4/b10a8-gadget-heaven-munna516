@@ -1,6 +1,6 @@
-** Live Link : 
+** Live Link : https://gadget-heaven-11.netlify.app/
 
-** Requirement Document Link : 
+** Requirement Document Link : https://github.com/ProgrammingHero1/B10-A8-gadget-heaven/blob/main/Batch-10_Assignment-08.pdf
 
 ** Fundamental concept use in this project:
 1. React Router
@@ -11,7 +11,7 @@
 6. Conditional Rendering
 
 
-** I’ve implemented local storage to manage and retain data on your website, providing efficient, persistent state across sessions without server dependencies.
+** I’ve implemented local storage to manage and retain data on this website, providing efficient, persistent state across sessions without server dependencies.
 
 ** 5 features of your project
 1. Category Base Product 
