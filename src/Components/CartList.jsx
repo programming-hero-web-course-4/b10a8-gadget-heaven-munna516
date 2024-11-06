@@ -4,8 +4,10 @@ import { getStoreCartList } from '../Utilities/AddToDb';
 import { json, useLoaderData, useNavigate } from 'react-router-dom';
 import CartAndWishlist from '../Components/CartAndWishlist';
 import { MdVerified } from "react-icons/md";
+import { useCart } from '../Utilities/CartContext';
 
 const CartList = () => {
+    const { addToCart} = useCart();
     const navigate = useNavigate()
     const [isDisable, setDisable] = useState(true)
     const [newPrice, setNewPrice] = useState(0)
@@ -24,7 +26,7 @@ const CartList = () => {
         const storedCartId = getStoreCartList()
         const storedInCart = data.filter((items) => storedCartId.includes(items.product_id))
         setStore(storedInCart)
-
+        addToCart('deleteOne')
     }
 
     const handleSortByPrice = () => {
@@ -40,14 +42,14 @@ const CartList = () => {
         const storedInCart = storedCartId.filter(item => item !== id);
         localStorage.setItem('cart-list', JSON.stringify(storedInCart))
         handleCart()
-
     }
     const deleteCart = () => {
         localStorage.setItem('cart-list', JSON.stringify([]))
         setNewPrice(totalPrice)
         setStore([])
+        addToCart('zero')
     }
-    const navigateHome= ()=>{
+    const navigateHome = () => {
         navigate('/')
     }
     return (
@@ -61,7 +63,7 @@ const CartList = () => {
                     <p className='text-xl text-gray-400'>Total : ${newPrice}</p>
                     <div className="modal-action text-center">
                         <form method="dialog">
-                            <button className="btn border-[#9538E2] hover:bg-[#9538E2] hover:text-white" onClick={()=>navigateHome()}>Close</button>
+                            <button className="btn border-[#9538E2] hover:bg-[#9538E2] hover:text-white" onClick={() => navigateHome()}>Close</button>
                         </form>
                     </div>
                 </div>

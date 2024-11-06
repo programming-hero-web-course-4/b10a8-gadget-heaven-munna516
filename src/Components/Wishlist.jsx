@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { getStoreWishList } from '../Utilities/AddToDb';
 import { useLoaderData } from 'react-router-dom';
 import CartAndWishlist from './CartAndWishlist';
+import { useWish } from '../Utilities/WishContext';
 
 const Wishlist = () => {
+    const {addToWish} = useWish()
     const data = useLoaderData()
     const storedWishId = getStoreWishList()
     const storedInWish = data.filter(items => storedWishId.includes(items.product_id))
@@ -15,6 +17,7 @@ const Wishlist = () => {
         const storedInWish = data.filter((items) => storedWishId.includes(items.product_id))
         console.log(storedInWish);
         setStore(storedInWish)
+        addToWish('deleteOne')
     }
     const handleDelete = (id) => {
         const storedWishId = getStoreWishList()

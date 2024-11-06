@@ -5,7 +5,7 @@ const CartAndWishlist = ({ product, handleDelete }) => {
     const { product_image, product_title, description, price, product_id } = product
 
     const deleteAlert = () => toast.error('Item removed', {
-        position: "top-right",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

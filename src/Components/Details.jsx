@@ -6,16 +6,20 @@ import { addToStoreCartList, addToStoreWishList } from '../Utilities/AddToDb';
 import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from 'react-helmet';
+import { useCart } from '../Utilities/CartContext';
+import { useWish } from '../Utilities/WishContext';
 
 const Details = () => {
+    const { addToCart } = useCart();
+    const { addToWish } = useWish()
     const [isDisabled, setIsDisabled] = useState(false);
     const { title } = useParams()
     const data = useLoaderData()
     const detailsProduct = data.find(product => product?.product_title == title)
     const { product_id, product_image, product_title, price, rating, specification, description } = detailsProduct
 
-    const notify1 = () => toast.success('Item added in cartlist', {
-        position: "top-right",
+    const notify1 = () => toast.success('Item added in Cart List', {
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -25,8 +29,8 @@ const Details = () => {
         theme: "light",
         transition: Bounce,
     });
-    const notify3 = () => toast.success('Item added in Wishlist', {
-        position: "top-right",
+    const notify3 = () => toast.success('Item added in Wish List', {
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -38,7 +42,7 @@ const Details = () => {
     });
 
     const notify2 = () => toast.warn('Already added', {
-        position: "top-right",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -55,7 +59,7 @@ const Details = () => {
         }
         else {
             notify1()
-
+            addToCart(id)
         }
     }
     const handleWish = (id) => {
@@ -65,6 +69,7 @@ const Details = () => {
         }
         else {
             notify3()
+            addToWish(id)
             setIsDisabled(true);
         }
 
