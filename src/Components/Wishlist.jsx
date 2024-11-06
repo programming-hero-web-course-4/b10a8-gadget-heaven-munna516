@@ -27,9 +27,9 @@ const Wishlist = () => {
     return (
         <>
             <div className='flex justify-between items-center mt-10 '>
-                <h1 className='text-xl font-bold'>Wishlist</h1>
+                <h1 className='text-2xl font-bold px-5'>Wishlist</h1>
             </div>
-            <div className='mt-10 mb-20 space-y-5'>
+            <div className='mt-10 mb-20 space-y-5 border-2 min-h-[100px] border-[#9538E2] rounded-lg p-3'>
                 {
                     store.map(product => <CartAndWishlist key={product.product_id} product={product} handleDelete={handleDelete}></CartAndWishlist>)
                 }

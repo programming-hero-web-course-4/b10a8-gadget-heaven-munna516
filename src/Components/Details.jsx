@@ -5,6 +5,7 @@ import ReusableBanner from './ReusableBanner';
 import { addToStoreCartList, addToStoreWishList } from '../Utilities/AddToDb';
 import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet';
 
 const Details = () => {
     const [isDisabled, setIsDisabled] = useState(false);
@@ -69,7 +70,10 @@ const Details = () => {
 
     }
     return (
-        <div>
+        <>
+            <Helmet>
+                <title>Gadget Heaven | Product Details</title>
+            </Helmet>
             <div className={`bg-[#9538E2] mb-96 text-center text-white pt-10 pb-64  rounded-bl-xl rounded-br-xl ${location.pathname != '/' ? 'rounded-tl-xl rounded-tr-xl' : ''}`}>
 
                 <ReusableBanner title={"Product Details"} subtitle={"Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!"}></ReusableBanner>
@@ -114,7 +118,7 @@ const Details = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

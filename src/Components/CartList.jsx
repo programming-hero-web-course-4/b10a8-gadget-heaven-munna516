@@ -66,7 +66,7 @@ const CartList = () => {
                     </div>
                 </div>
             </dialog>
-            <div className='flex justify-between items-center mt-10 '>
+            <div className='md:flex justify-between items-center text-center mt-10 px-5'>
                 <h1 className='text-2xl font-bold'>Cart</h1>
                 <div className='flex items-center gap-4'>
                     <h1 className='text-xl font-bold'>Total Cost: ${totalPrice}</h1>
@@ -76,7 +76,7 @@ const CartList = () => {
                 </div>
             </div>
 
-            <div className='mt-10 mb-20 space-y-5'>
+            <div className='mt-10 mb-20 space-y-5 border-2 rounded-lg p-3 min-h-[100px] border-[#9538E2]'>
                 {
                     store.map(product => <CartAndWishlist key={product.product_id} product={product} handleDelete={handleDelete}></CartAndWishlist>)
 
